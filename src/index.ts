@@ -34,14 +34,15 @@ async function main(): Promise<void> {
       const flow = new Flow3Referral(refCode, currentProxy, successful + 1, count);
 
       try {
-        const token = await flow.login();
-        if (token) {
-          const wallet = flow.getWallet();
-          logMessage(successful + 1, count, `Wallet Address: ${wallet.publicKey}`, "success");
-          logMessage(successful + 1, count, `Private Key: ${wallet.secretKey}`, "success");
-          accountsFlow.write(`Wallet Address : ${wallet.publicKey}\nPrivate Key : ${wallet.secretKey}\n`);
-          tokenAccount.write(`${wallet.secretKey}\n`);
+        const data = await flow.singleProses();
+        if (data) {
+          logMessage(successful + 1, count, `Email Address: ${data.dataAccount.email}`, "success");
+          accountsFlow.write(`Email Address : ${data.dataAccount.email}\n`);
+          accountsFlow.write(`Password : ${data.dataAccount.password}\n`);
+          accountsFlow.write(`Wallet Address : ${data.dataWallet.publicKey}\n`);
+          accountsFlow.write(`Secret Key : ${data.dataWallet.secretKey}\n`);
           accountsFlow.write(`===================================================================\n`);
+          tokenAccount.write(`${data.dataAccount.refreshToken}\n`);
           successful++;
           retryCount = 0;
         }

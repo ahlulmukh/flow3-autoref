@@ -4,3 +4,4 @@ node_modules
 accounts.txt
 proxy.txt
 token.txt
+config.json

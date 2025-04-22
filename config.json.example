@@ -1,0 +1,8 @@
+{
+    "captchaServices": {
+        "captchaUsing": "private",
+        "urlPrivate" : "url_service",
+        "antiCaptchaApikey": [""],
+        "captcha2Apikey": [""]
+    }
+}

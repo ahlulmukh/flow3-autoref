@@ -5,6 +5,7 @@ This bot automates the process of creating accounts and using referral codes for
 ## Features
 
 - Automatically generates wallet.
+- Automatically generates email address and password.
 - Uses proxies to avoid IP bans.
 - Logs the created accounts.
 
@@ -12,6 +13,7 @@ This bot automates the process of creating accounts and using referral codes for
 
 - Node.js v18.20.6 LTS [Download](https://nodejs.org/dist/v18.20.6/node-v18.20.6-x64.msi).
 - Account Flow3 [Flow3](https://dashboard.flow3.tech/?ref=UVRKPHgSp)
+- Captcha Services Anti Captcha / 2 Captcha Or cf-cloudflarance
 - Proxy (Optional). Best Proxy [Cherry Proxy](https://center.cherryproxy.com/Login/Register?invite=029ad2d3)
 
 ## Installation
@@ -35,6 +37,18 @@ This bot automates the process of creating accounts and using referral codes for
    http://user:pass@host:port
    http://user:pass@host:port
    http://user:pass@host:port
+   ```
+4. Make config and put your apikey `cp config.json.example config.json`. `captchaUsing` can be `antiCaptcha` or `2captcha` or you can using your private captcha solved `private` [Using this for private captcha](https://github.com/ZFC-Digital/cf-clearance-scraper/)
+
+   ```json
+   {
+     "captchaServices": {
+       "captchaUsing": "private",
+       "urlPrivate": "url_services_private",
+       "antiCaptchaApikey": [""],
+       "captcha2Apikey": [""]
+     }
+   }
    ```
 
 ## Usage
