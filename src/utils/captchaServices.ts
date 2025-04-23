@@ -35,7 +35,7 @@ export class CaptchaServices {
     }
 
     async solvedPrivate(currentNum: number, total: number) {
-        logMessage(currentNum, total, "Trying to solved captcha cloudflare...", "process");
+        logMessage(currentNum, total, "Trying to solved captcha cloudflare with private...", "process");
         try {
             const response = await axios.post(
                 this.cfSolved,
@@ -63,7 +63,7 @@ export class CaptchaServices {
     }
 
     async antiCaptcha(currentNum: number, total: number) {
-        logMessage(currentNum, total, "Trying solving captcha Turnstile...", "process");
+        logMessage(currentNum, total, "Trying solving captcha Turnstile with anticaptcha...", "process");
         const apiKey = config.captchaServices.antiCaptchaApikey[0];
 
         try {
@@ -104,13 +104,14 @@ export class CaptchaServices {
     }
 
     async solveCaptcha2(currentNum: number, total: number) {
-        logMessage(currentNum, total, "Trying solving captcha Turnstile...", "process");
+        logMessage(currentNum, total, "Trying solving captcha Turnstile with 2captcha...", "process");
         const apikey = config.captchaServices.captcha2Apikey[0];
         try {
             const res = await new Solver(apikey).cloudflareTurnstile({
                 pageurl: this.pageUrl,
                 sitekey: this.sitekey,
             });
+            logMessage(currentNum, total, "Captcha solved successfully!", "success");
             return res.data;
         } catch (error) {
             logMessage(currentNum, total, `2Captcha failed`, "error");
